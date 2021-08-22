@@ -48,7 +48,7 @@
                         <label for="fname">Username:</label><br>
                         <input type="text" placeholder="Enter Username" class="form-control" name="Username" id="Username"><br>
                         <label for="password">Password:</label><br>
-                        <input type="password" class="form-control" placeholder="Enter Password" name="Password" id="Password"><br>
+                        <input type="password" class="form-control" placeholder="Enter Password" name="pass" id="pass"><br>
                         <div class="button2">
                             <button class="btn5" onclick="sendlogin();">SUBMIT</button>
                         </div>
@@ -76,7 +76,7 @@
                         <option value="MALE">MALE</option>
                         <option value="FEMLALE">FEMALE</option>
                         <option value="TRANSGENDER">TRANSGENDER</option>
-                      </select><br>
+                        </select><br>
                         <label for="password">Password:</label><br>
                         <input type="password" class="form-control" placeholder="Choose Password" name="pass" id="pass"><br>
                         <label for="cpass">Confirm Password:</label><br>
@@ -118,18 +118,22 @@
     function sendlogin()
     {
        var Username = document.getElementById('Username').value;
-       var Password = document.getElementById('Password').value;
+       var pass = document.getElementById('pass').value;
        var token = "<?php echo password_hash("logintoken", PASSWORD_DEFAULT);?>"
-       if(Username!=="" && Password!=="")
+       if(Username!=="" && pass!=="")
        {
         $.ajax(
                    {
                        type: 'POST',
                        url:"ajax/login.php",
-                       data:{Username:Username,Password:Password,token:token},
+                       data:{Username:Username,pass:pass,token:token},
                        success:function(data)
                        {
-                         alert(data)
+                        if(data==0)
+                           {
+                            alert('login successfully')
+                            window.location="dashboard.php"  
+                           }              
                        }
                     }
                );
