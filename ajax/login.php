@@ -21,7 +21,7 @@
                 }
                 else
                 {
-                    echo "something went wrong";
+                    echo "password doesn't match";
                 }
             }
         }

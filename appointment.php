@@ -129,7 +129,10 @@
                        data:{Username:Username,pass1:pass1,token:token},
                        success:function(data)
                        {
-                        alert(data)           
+                        if(data==0)  {
+                            alert('login successfull');
+                            window.location="dashboard.php";
+                        }       
                        }
                     }
                );
