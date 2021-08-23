@@ -132,7 +132,10 @@
                         if(data==0)  {
                             alert('login successfull');
                             window.location="dashboard.php";
-                        }       
+                        }
+                        else{
+                            alert(data)
+                        }      
                        }
                     }
                );
