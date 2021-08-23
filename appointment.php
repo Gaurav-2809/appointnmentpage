@@ -48,7 +48,7 @@
                         <label for="fname">Username:</label><br>
                         <input type="text" placeholder="Enter Username" class="form-control" name="Username" id="Username"><br>
                         <label for="password">Password:</label><br>
-                        <input type="password" class="form-control" placeholder="Enter Password" name="pass" id="pass"><br>
+                        <input type="password" class="form-control" placeholder="Enter Password" name="pass" id="pass1"><br>
                         <div class="button2">
                             <button class="btn5" onclick="sendlogin();">SUBMIT</button>
                         </div>
@@ -118,22 +118,18 @@
     function sendlogin()
     {
        var Username = document.getElementById('Username').value;
-       var pass = document.getElementById('pass').value;
+       var pass1 = document.getElementById('pass1').value;
        var token = "<?php echo password_hash("logintoken", PASSWORD_DEFAULT);?>"
-       if(Username!=="" && pass!=="")
+       if(Username!=="" && pass1!=="")
        {
         $.ajax(
                    {
                        type: 'POST',
                        url:"ajax/login.php",
-                       data:{Username:Username,pass:pass,token:token},
+                       data:{Username:Username,pass1:pass1,token:token},
                        success:function(data)
                        {
-                        if(data==0)
-                           {
-                            alert('login successfully')
-                            window.location="dashboard.php"  
-                           }              
+                        alert(data)           
                        }
                     }
                );
